@@ -1,0 +1,20 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+    name: loesak-tk-tls
+spec:
+    secretName: loesak-tk
+    issuerRef: 
+        name: letsencypt-prod
+        kind: ClusterIssuer
+    commonName: loesak.tk
+    dnsNames:
+        - loesak.tk
+        - www.loesak.tk
+    acme:
+        config:
+            - http01:
+                ingressClass: nginx
+              domains:
+                - loesak.tk
+                - www.loesak.tk
